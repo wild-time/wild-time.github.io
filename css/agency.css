@@ -343,7 +343,7 @@ section h3.section-subheading
 @media (min-width:768px) {
 	section
 	{
-		padding:65px 0
+		padding:39px 0
 	}
 }
 
@@ -1076,3 +1076,17 @@ body
 .col-sm-2 {
 width: 15%;
 }
+
+.highlight_new_last {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:-20px;
+	/* margin-bottom:10px; */
+	}
+
+	.highlight_new_normal {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top:-20px;
+		margin-bottom:30px;
+		}

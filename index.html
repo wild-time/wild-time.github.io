@@ -19,6 +19,10 @@
 
     <!-- Custom Fonts -->
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom Code -->
+    <link rel="stylesheet" href="css/ft-syntax-highlight.css">
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
@@ -160,24 +164,13 @@
                     <p></p>
                     <h3 class="section-heading">Installation</h3>
                     <p class="large text-muted">To use our code, you first need to install your own version of pytorch,
-                        with version > 1.7.1 .
-
+                        with version > 1.7.1.
                     </p>
                     <p class="large text-muted">
                         Then, we recommend using pip to install Wild-Time:
                     <p class="large text-muted">Running <code
                             class="language-plaintext highlighter-rouge">pip install wildtime</code> will
-                        automatically check for and install all of these requirements
-                    <p class="large text-muted">If you plan to edit or contribute to Wild-Time, you should install from
-                        source:</p>
-                    <div class="language-bash highlighter-rouge">
-                        <div class="highlight">
-                            <pre class="highlight"><code>git clone https://github.com/huaxiuyao/Wild-Time.git
-                            <span class="nb">cd </span>wilds
-                            pip <span class="nb">install</span> <span class="nt">-e</span> <span class="nb">.</span>
-                            </code></pre>
-                        </div>
-                    </div>
+                        automatically check for and install all of these requirements.
                     </p></br>
                     <h3 class="section-heading">Using the Wild-Time package
                     </h3>
@@ -185,14 +178,16 @@
                     <h4 class="section-heading">Import dependencies
                     </h4>
                     <p class="large text-muted">
-                        To load the wildtime data, you first need to import the dependencies:
+                        To load the wildtime data, you first need to import the configs, which include parameters that
+                        contain the imported dataset and will be discussed later.
                     </p></br>
                     <div class="language-bash highlighter-rouge">
-                        <div class="highlight">
-                            <pre class="highlight"><code>import argparse
-                            <span class="nb">from configures import configures</span>
-                            <span class="nb">configs = argparse.Namespace(**configs)</span>
-                            </code></pre>
+                        <div class="highlight_new_normal">
+                            <pre class="ft-syntax-highlight" data-syntax="python" data-syntax-theme="one-light"
+                                data-showTooltips="true"><code><span class="keyword">import</span> argparse    
+<span class="keyword">from</span> configures <span class="keyword">import</span> configures
+<span class="object">configures</span> = <span class="identifier">argparse</span>.<span class="identifier-native">Namespace</span>(**<span class="variable">configs</span>)</code>
+</pre>
                         </div>
                     </div>
                     <h4 class="section-heading">Load Wild-Time data
@@ -202,29 +197,78 @@
                     </p></br>
                     <div class="language-bash highlighter-rouge">
                         <div class="highlight">
-                            <pre class="highlight"><code>from WildTime import dataloader
-                            <span class="nb">data = dataloader.getdata(configs)
-                            </span>
-                            </code></pre>
-                        </div>
-                        <h4 class="section-heading">Baseline Running
-                        </h4>
-                        <p class="large text-muted">
-                            To train a baseline on a Wild-Time dataset and evaluate under Eval-Fix (default evaluation),
-                            use the code:
-                        </p></br>
-                        <div class="language-bash highlighter-rouge">
-                            <div class="highlight">
-                                <pre class="highlight"><code>from WildTime import dataloader
-                                <span class="nb">data = dataloader.getdata(configs)
-                                </span>
-                                </code></pre>
+                            <div class="highlight_new_normal">
+                                <pre class="ft-syntax-highlight" data-syntax="python" data-syntax-theme="one-light"
+                                    data-showTooltips="true"><code><span class="keyword">from</span> WildTime <span class="keyword">import</span> dataloader    
+<span class="object">data</span> = <span class="identifier">dataloader</span>.<span class="identifier-native">getdata</span>(<span class="variable">configs</span>)</code>
+</pre>
+                            </div>
+                            <h4 class="section-heading">Baseline Running
+                            </h4>
+                            <p class="large text-muted">
+                                To train a baseline on a Wild-Time dataset and evaluate under Eval-Fix (default
+                                evaluation),
+                                use the code:
+                            </p></br>
+                            <div class="language-bash highlighter-rouge">
+                                <div class="highlight_new_last">
+                                    <pre class="ft-syntax-highlight" data-syntax="python" data-syntax-theme="one-light"
+                                        data-showTooltips="true"><code><span class="keyword">from</span> WildTime <span class="keyword">import</span> baseline_trainer    
+<span class="identifier">baseline_trainer</span>.<span class="identifier-native">train</span>(configs)</code>
+</pre>
+                                </div>
+                                <p class="large text-muted">Specify parameters in the config as follows:</p>
+                                <ul class="large text-muted" style="float:left; width: 100%">
+                                    <li> Specify the dataset with <code
+                                            class="language-plaintext highlighter-rouge">'dataset'</code> in configs.
+                                        <ul class="large text-muted" style="float:left; width: 100%">
+                                            <li>
+                                                [arxiv, drug, fmow, huffpost, mimic, yearbook]
+                                            </li>
+                                            <li>
+                                                For MIMIC, specify one of two prediction tasks (mortality and
+                                                readmission) using <code
+                                                    class="language-plaintext highlighter-rouge">'prediction_type': 'mortality'</code>
+                                                or
+                                                <code
+                                                    class="language-plaintext highlighter-rouge">'prediction_type': 'readmission'</code>.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li> Specify the baseline with <code
+                                            class="language-plaintext highlighter-rouge">'method'</code>.
+                                    </li>
+                                    <li>
+                                        To run Eval-Fix, set <code
+                                            class="language-plaintext highlighter-rouge">'offline': True</code>.
+                                        <ul class="large text-muted" style="float:left; width: 100%">
+                                            <li>
+                                                Specify the ID/OOD split time step with <code
+                                                    class="language-plaintext highlighter-rouge">'split_time'</code>.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li> To run Eval-Stream, set <code
+                                            class="language-plaintext highlighter-rouge">'eval_next_timesteps'</code>.
+                                    </li>
+                                    <li> Set the number of training iterations with <code
+                                            class="language-plaintext highlighter-rouge">'train_update_iters'</code>.
+                                    </li>
+                                    <li> [Optional] If using a data directory or checkpoint directory other than <code
+                                            class="language-plaintext highlighter-rouge">'./Data'</code>
+                                        and <code class="language-plaintext highlighter-rouge">'./checkpoints'</code>,
+                                        specify their paths with <code
+                                            class="language-plaintext highlighter-rouge">'--data_dir'</code> and <code
+                                            class="language-plaintext highlighter-rouge">'--log_dir'</code>.
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
     </section>
+
+
 
     <!-- datasets section -->
     <!-- <section id="call" class="bg-mid-gray"> -->
@@ -365,7 +409,8 @@
                 datasets. For each dataset, we
                 bold the best-performing algorithm that conforms to official submission guidelines.</p>
 
-            <p class="large text-muted"><b>The leaderboard only used for comparing the results under the Eval-Fix setting.</b></p>
+            <p class="large text-muted"><b>The leaderboard only used for comparing the results under the Eval-Fix
+                    setting.</b></p>
 
             <h3 class="section-heading">Eval-Fix Evaluation</h3>
 
@@ -373,157 +418,388 @@
                 <div class="container w">
                     <div class="row centered">
                         <style type="text/css">
-                            .tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;}
-                            .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
-                              font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
-                            .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
-                              font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-                            .tg .tg-65iu{border-color:#cccccc;text-align:left;vertical-align:top}
-                            .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-                            .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-                            .tg .tg-o57c{border-color:#cccccc;text-align:center;vertical-align:top}
-                            </style>
-                            <table class="tg">
+                            .tg {
+                                border-collapse: collapse;
+                                border-color: #ccc;
+                                border-spacing: 0;
+                            }
+
+                            .tg td {
+                                background-color: #fff;
+                                border-color: #ccc;
+                                border-style: solid;
+                                border-width: 1px;
+                                color: #333;
+                                font-family: Arial, sans-serif;
+                                font-size: 14px;
+                                overflow: hidden;
+                                padding: 10px 5px;
+                                word-break: normal;
+                            }
+
+                            .tg th {
+                                background-color: #f0f0f0;
+                                border-color: #ccc;
+                                border-style: solid;
+                                border-width: 1px;
+                                color: #333;
+                                font-family: Arial, sans-serif;
+                                font-size: 14px;
+                                font-weight: normal;
+                                overflow: hidden;
+                                padding: 10px 5px;
+                                word-break: normal;
+                            }
+
+                            .tg .tg-baqh {
+                                text-align: center;
+                                vertical-align: top
+                            }
+
+                            .tg .tg-wh93 {
+                                border-color: #cccccc;
+                                font-weight: bold;
+                                text-align: center;
+                                vertical-align: top
+                            }
+
+                            .tg .tg-65iu {
+                                border-color: #cccccc;
+                                text-align: left;
+                                vertical-align: top
+                            }
+
+                            .tg .tg-c3ow {
+                                border-color: inherit;
+                                text-align: center;
+                                vertical-align: top
+                            }
+
+                            .tg .tg-0pky {
+                                border-color: inherit;
+                                text-align: left;
+                                vertical-align: top
+                            }
+
+                            .tg .tg-o57c {
+                                border-color: #cccccc;
+                                text-align: center;
+                                vertical-align: top
+                            }
+
+                            .tg .tg-7btt {
+                                border-color: inherit;
+                                font-weight: bold;
+                                text-align: center;
+                                vertical-align: top
+                            }
+
+                            .tg .tg-0lax {
+                                text-align: left;
+                                vertical-align: top
+                            }
+
+                            .tg .tg-amwm {
+                                font-weight: bold;
+                                text-align: center;
+                                vertical-align: top
+                            }
+                        </style>
+                        <table class="tg">
                             <thead>
-                              <tr>
-                                <th class="tg-0pky"></th>
-                                <th class="tg-c3ow" colspan="2">Yearbook (Acc)</th>
-                                <th class="tg-c3ow" colspan="2">FMoW (Acc)</th>
-                                <th class="tg-c3ow" colspan="2">MIMIC-Readmission <span style="font-weight:400;font-style:normal">(Acc)</span></th>
-                                <th class="tg-c3ow" colspan="2">MIMIC-Mortality (AUC)</th>
-                                <th class="tg-c3ow" colspan="2">Huffpost (Acc)</th>
-                                <th class="tg-c3ow" colspan="2">arXiv (Acc)</th>
-                                <th class="tg-c3ow" rowspan="2">Contact</th>
-                                <th class="tg-c3ow" rowspan="2">References</th>
-                              </tr>
-                              <tr>
-                                <th class="tg-65iu"></th>
-                                <th class="tg-o57c">Avg.</th>
-                                <th class="tg-o57c">Worst</th>
-                                <th class="tg-o57c">Avg.</th>
-                                <th class="tg-o57c">Worst</th>
-                                <th class="tg-c3ow">Avg</th>
-                                <th class="tg-c3ow">Worst</th>
-                                <th class="tg-c3ow">Avg</th>
-                                <th class="tg-c3ow">Worst</th>
-                                <th class="tg-c3ow">Avg</th>
-                                <th class="tg-c3ow">Worst</th>
-                                <th class="tg-c3ow">Avg</th>
-                                <th class="tg-c3ow">Worst</th>
-                              </tr>
+                                <tr>
+                                    <th class="tg-0pky"></th>
+                                    <th class="tg-c3ow" colspan="2">Yearbook (Acc)</th>
+                                    <th class="tg-c3ow" colspan="2">FMoW (Acc)</th>
+                                    <th class="tg-c3ow" colspan="2">MIMIC-Readmission <span
+                                            style="font-weight:400;font-style:normal">(Acc)</span></th>
+                                    <th class="tg-c3ow" colspan="2">MIMIC-Mortality (AUC)</th>
+                                    <th class="tg-c3ow" colspan="2">Huffpost (Acc)</th>
+                                    <th class="tg-c3ow" colspan="2">arXiv (Acc)</th>
+                                    <th class="tg-c3ow" rowspan="2">Contact</th>
+                                    <th class="tg-c3ow" rowspan="2">References</th>
+                                </tr>
+                                <tr>
+                                    <th class="tg-65iu"></th>
+                                    <th class="tg-o57c">Avg.</th>
+                                    <th class="tg-o57c">Worst</th>
+                                    <th class="tg-o57c">Avg.</th>
+                                    <th class="tg-o57c">Worst</th>
+                                    <th class="tg-c3ow">Avg</th>
+                                    <th class="tg-c3ow">Worst</th>
+                                    <th class="tg-c3ow">Avg</th>
+                                    <th class="tg-c3ow">Worst</th>
+                                    <th class="tg-c3ow">Avg</th>
+                                    <th class="tg-c3ow">Worst</th>
+                                    <th class="tg-c3ow">Avg</th>
+                                    <th class="tg-c3ow">Worst</th>
+                                </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td class="tg-65iu">Fine-tuning</td>
-                                <td class="tg-o57c">81.98 (1.52)</td>
-                                <td class="tg-o57c"><span style="font-weight:bold">69.62 (3.38)</span></td>
-                                <td class="tg-o57c">45.77 (0.53)</td>
-                                <td class="tg-o57c">43.21 (0.85)</td>
-                                <td class="tg-c3ow">48.84 (4.25)</td>
-                                <td class="tg-c3ow">44.62 (4.92)</td>
-                                <td class="tg-c3ow">71.71 (5.03)</td>
-                                <td class="tg-c3ow">62.34 (7.82)</td>
-                                <td class="tg-c3ow">69.59 (0.10)</td>
-                                <td class="tg-c3ow">68.91 (0.49)</td>
-                                <td class="tg-c3ow">50.31 (0.39)</td>
-                                <td class="tg-c3ow">48.19 (0.41)</td>
-                                <td class="tg-c3ow">Wild-Time</td>
-                                <td class="tg-c3ow">Paper/Code</td>
-                              </tr>
-                              <tr>
-                                <td class="tg-65iu">EWC</td>
-                                <td class="tg-o57c">80.07 (0.22)</td>
-                                <td class="tg-o57c">66.61 (1.95)</td>
-                                <td class="tg-o57c">45.60 (0.28)</td>
-                                <td class="tg-o57c">43.13 (0.50)</td>
-                                <td class="tg-c3ow">51.41 (1.62)</td>
-                                <td class="tg-c3ow">47.24 (2.28)</td>
-                                <td class="tg-c3ow">69.04 (2.03)</td>
-                                <td class="tg-c3ow">58.89 (2.08)</td>
-                                <td class="tg-c3ow">69.42 (1.00)</td>
-                                <td class="tg-c3ow">68.61 (0.98)</td>
-                                <td class="tg-c3ow">50.40 (0.11)</td>
-                                <td class="tg-c3ow">48.18 (0.18)</td>
-                                <td class="tg-c3ow">Wild-Time</td>
-                                <td class="tg-c3ow">Paper/Code</td>
-                              </tr>
-                              <tr>
-                                <td class="tg-65iu">SI</td>
-                                <td class="tg-o57c">78.70 (3.78)</td>
-                                <td class="tg-o57c">65.18 (2.44)</td>
-                                <td class="tg-o57c">44.87 (0.73)</td>
-                                <td class="tg-o57c">42.97 (1.15)</td>
-                                <td class="tg-c3ow">43.43 (7.34)</td>
-                                <td class="tg-c3ow">37.01 (11.43)</td>
-                                <td class="tg-c3ow">66.47 (1.56)</td>
-                                <td class="tg-c3ow">55.49 (1.31)</td>
-                                <td class="tg-c3ow">70.46 (0.27)</td>
-                                <td class="tg-c3ow">69.05 (0.52)</td>
-                                <td class="tg-c3ow">50.21 (0.40)</td>
-                                <td class="tg-c3ow">48.07 (0.48)</td>
-                                <td class="tg-c3ow">Wild-Time</td>
-                                <td class="tg-c3ow">Paper/Code</td>
-                              </tr>
-                              <tr>
-                                <td class="tg-65iu">A-GEM</td>
-                                <td class="tg-o57c">81.04 (1.40)</td>
-                                <td class="tg-o57c">67.07 (2.23)</td>
-                                <td class="tg-o57c">45.21 (0.20)</td>
-                                <td class="tg-o57c">42.49 (0.70)</td>
-                                <td class="tg-c3ow">55.55 (22.0)</td>
-                                <td class="tg-c3ow">53.74 (20.4)</td>
-                                <td class="tg-c3ow">60.47 (0.28)</td>
-                                <td class="tg-c3ow">50.00 (0.00)</td>
-                                <td class="tg-c3ow">70.22 (0.50)</td>
-                                <td class="tg-c3ow">69.15 (0.88)</td>
-                                <td class="tg-c3ow">50.30 (0.37)</td>
-                                <td class="tg-c3ow">48.14 (0.40)</td>
-                                <td class="tg-c3ow">Wild-Time</td>
-                                <td class="tg-c3ow">Paper/Code</td>
-                              </tr>
-                              <tr>
-                                <td class="tg-65iu"></td>
-                                <td class="tg-o57c"></td>
-                                <td class="tg-o57c"></td>
-                                <td class="tg-o57c"></td>
-                                <td class="tg-o57c"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-65iu"></td>
-                                <td class="tg-o57c"></td>
-                                <td class="tg-o57c"></td>
-                                <td class="tg-o57c"></td>
-                                <td class="tg-o57c"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                                <td class="tg-c3ow"></td>
-                              </tr>
+                                <tr>
+                                    <td class="tg-65iu">Fine-tuning</td>
+                                    <td class="tg-o57c">81.98 (1.52)</td>
+                                    <td class="tg-o57c"><span style="font-weight:bold">69.62 (3.38)</span></td>
+                                    <td class="tg-o57c">45.77 (0.53)</td>
+                                    <td class="tg-o57c">43.21 (0.85)</td>
+                                    <td class="tg-c3ow">48.84 (4.25)</td>
+                                    <td class="tg-c3ow">44.62 (4.92)</td>
+                                    <td class="tg-c3ow">71.71 (5.03)</td>
+                                    <td class="tg-c3ow">62.34 (7.82)</td>
+                                    <td class="tg-c3ow">69.59 (0.10)</td>
+                                    <td class="tg-c3ow">68.91 (0.49)</td>
+                                    <td class="tg-c3ow">50.31 (0.39)</td>
+                                    <td class="tg-c3ow">48.19 (0.41)</td>
+                                    <td class="tg-c3ow"><a href="mailto:wildtime@googlegroups.com" target="_blank"
+                                            rel="noopener noreferrer">Wild-Time</a></td>
+                                    <td class="tg-c3ow">Paper/<a href="https://github.com/huaxiuyao/Wild-Time"
+                                            target="_blank" rel="noopener noreferrer">Code</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-65iu">EWC</td>
+                                    <td class="tg-o57c">80.07 (0.22)</td>
+                                    <td class="tg-o57c">66.61 (1.95)</td>
+                                    <td class="tg-o57c">45.60 (0.28)</td>
+                                    <td class="tg-o57c">43.13 (0.50)</td>
+                                    <td class="tg-c3ow">51.41 (1.62)</td>
+                                    <td class="tg-c3ow">47.24 (2.28)</td>
+                                    <td class="tg-c3ow">69.04 (2.03)</td>
+                                    <td class="tg-c3ow">58.89 (2.08)</td>
+                                    <td class="tg-c3ow">69.42 (1.00)</td>
+                                    <td class="tg-c3ow">68.61 (0.98)</td>
+                                    <td class="tg-7btt">50.40 (0.11)</td>
+                                    <td class="tg-7btt">48.18 (0.18)</td>
+                                    <td class="tg-c3ow"><a href="mailto:wildtime@googlegroups.com" target="_blank"
+                                            rel="noopener noreferrer">Wild-Time</a></td>
+                                    <td class="tg-c3ow">Paper/<a href="https://github.com/huaxiuyao/Wild-Time"
+                                            target="_blank" rel="noopener noreferrer">Code</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-65iu">SI</td>
+                                    <td class="tg-o57c">78.70 (3.78)</td>
+                                    <td class="tg-o57c">65.18 (2.44)</td>
+                                    <td class="tg-o57c">44.87 (0.73)</td>
+                                    <td class="tg-o57c">42.97 (1.15)</td>
+                                    <td class="tg-c3ow">43.43 (7.34)</td>
+                                    <td class="tg-c3ow">37.01 (11.43)</td>
+                                    <td class="tg-c3ow">66.47 (1.56)</td>
+                                    <td class="tg-c3ow">55.49 (1.31)</td>
+                                    <td class="tg-c3ow">70.46 (0.27)</td>
+                                    <td class="tg-c3ow">69.05 (0.52)</td>
+                                    <td class="tg-c3ow">50.21 (0.40)</td>
+                                    <td class="tg-c3ow">48.07 (0.48)</td>
+                                    <td class="tg-c3ow"><a href="mailto:wildtime@googlegroups.com" target="_blank"
+                                            rel="noopener noreferrer">Wild-Time</a></td>
+                                    <td class="tg-c3ow">Paper/<a href="https://github.com/huaxiuyao/Wild-Time"
+                                            target="_blank" rel="noopener noreferrer">Code</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-65iu">A-GEM</td>
+                                    <td class="tg-o57c">81.04 (1.40)</td>
+                                    <td class="tg-o57c">67.07 (2.23)</td>
+                                    <td class="tg-o57c">45.21 (0.20)</td>
+                                    <td class="tg-o57c">42.49 (0.70)</td>
+                                    <td class="tg-c3ow">55.55 (22.0)</td>
+                                    <td class="tg-c3ow">53.74 (20.4)</td>
+                                    <td class="tg-c3ow">60.47 (0.28)</td>
+                                    <td class="tg-c3ow">50.00 (0.00)</td>
+                                    <td class="tg-c3ow">70.22 (0.50)</td>
+                                    <td class="tg-c3ow">69.15 (0.88)</td>
+                                    <td class="tg-c3ow">50.30 (0.37)</td>
+                                    <td class="tg-c3ow">48.14 (0.40)</td>
+                                    <td class="tg-c3ow"><a href="mailto:wildtime@googlegroups.com" target="_blank"
+                                            rel="noopener noreferrer">Wild-Time</a></td>
+                                    <td class="tg-c3ow">Paper/<a href="https://github.com/huaxiuyao/Wild-Time"
+                                            target="_blank" rel="noopener noreferrer">Code</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-65iu">ERM</td>
+                                    <td class="tg-o57c">79.50 (6.23)</td>
+                                    <td class="tg-o57c">63.09 (5.15)</td>
+                                    <td class="tg-wh93">51.99 (0.37)</td>
+                                    <td class="tg-wh93">48.79 (0.49)</td>
+                                    <td class="tg-c3ow">58.51 (4.06)</td>
+                                    <td class="tg-c3ow">55.84 (4.42)</td>
+                                    <td class="tg-c3ow">69.74 (4.51)</td>
+                                    <td class="tg-c3ow">59.43 (6.85)</td>
+                                    <td class="tg-c3ow">70.42 (1.15)</td>
+                                    <td class="tg-c3ow">68.71 (1.36)</td>
+                                    <td class="tg-c3ow">45.94 (0.97)</td>
+                                    <td class="tg-c3ow">44.09 (1.05)</td>
+                                    <td class="tg-c3ow"><a href="mailto:wildtime@googlegroups.com" target="_blank"
+                                            rel="noopener noreferrer">Wild-Time</a></td>
+                                    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal">Paper/</span><a
+                                            href="https://github.com/huaxiuyao/Wild-Time" target="_blank"
+                                            rel="noopener noreferrer">Code</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-65iu">GroupDRO</td>
+                                    <td class="tg-o57c">77.06 (1.67)</td>
+                                    <td class="tg-o57c">60.96 (1.83)</td>
+                                    <td class="tg-o57c">37.61 (1.16)</td>
+                                    <td class="tg-o57c">34.41 (1.39)</td>
+                                    <td class="tg-7btt">66.91 (0.91)</td>
+                                    <td class="tg-7btt">65.68 (1.32)</td>
+                                    <td class="tg-c3ow">73.06 (2.32)</td>
+                                    <td class="tg-c3ow">65.52 (3.74)</td>
+                                    <td class="tg-c3ow">69.53 (0.54)</td>
+                                    <td class="tg-c3ow">67.68 (0.78)</td>
+                                    <td class="tg-c3ow">39.06 (0.54)</td>
+                                    <td class="tg-c3ow">37.18 (0.52)</td>
+                                    <td class="tg-c3ow"><a href="mailto:wildtime@googlegroups.com" target="_blank"
+                                            rel="noopener noreferrer">Wild-Time</a></td>
+                                    <td class="tg-c3ow"><span style="font-weight:400;font-style:normal">Paper/</span><a
+                                            href="https://github.com/huaxiuyao/Wild-Time" target="_blank"
+                                            rel="noopener noreferrer">Code</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0lax">mixup</td>
+                                    <td class="tg-baqh">76.72 (1.35)</td>
+                                    <td class="tg-baqh">58.70 (1.36)</td>
+                                    <td class="tg-baqh">49.82 (0.19)</td>
+                                    <td class="tg-baqh">45.58 (0.31)</td>
+                                    <td class="tg-baqh">65.62 (3.57)</td>
+                                    <td class="tg-baqh">63.90 (3.61)</td>
+                                    <td class="tg-baqh">64.09 (1.39)</td>
+                                    <td class="tg-baqh">52.44 (1.95)</td>
+                                    <td class="tg-amwm">71.18 (1.17)</td>
+                                    <td class="tg-baqh">68.89 (0.38)</td>
+                                    <td class="tg-baqh">45.12 (0.71)</td>
+                                    <td class="tg-baqh">43.23 (0.75)</td>
+                                    <td class="tg-baqh"><a href="mailto:wildtime@googlegroups.com" target="_blank"
+                                            rel="noopener noreferrer">Wild-Time</a></td>
+                                    <td class="tg-baqh"><span style="font-weight:400;font-style:normal">Paper/</span><a
+                                            href="https://github.com/huaxiuyao/Wild-Time" target="_blank"
+                                            rel="noopener noreferrer">Code</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0lax">LISA</td>
+                                    <td class="tg-baqh">83.65 (4.61)</td>
+                                    <td class="tg-baqh">68.53 (5.79)</td>
+                                    <td class="tg-baqh">48.76 (0.48)</td>
+                                    <td class="tg-baqh">45.41 (0.21)</td>
+                                    <td class="tg-baqh">55.99 (2.89)</td>
+                                    <td class="tg-baqh">53.73 (2.67)</td>
+                                    <td class="tg-amwm">78.11 (0.93)</td>
+                                    <td class="tg-amwm">71.69 (1.93)</td>
+                                    <td class="tg-baqh">69.99 (0.60)</td>
+                                    <td class="tg-baqh">68.04 (0.75)</td>
+                                    <td class="tg-baqh">47.82 (0.47)</td>
+                                    <td class="tg-baqh">45.91 (0.42)</td>
+                                    <td class="tg-baqh"><a href="mailto:wildtime@googlegroups.com" target="_blank"
+                                            rel="noopener noreferrer">Wild-Time</a></td>
+                                    <td class="tg-baqh"><span style="font-weight:400;font-style:normal">Paper/</span><a
+                                            href="https://github.com/huaxiuyao/Wild-Time" target="_blank"
+                                            rel="noopener noreferrer">Code</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0lax">CORAL</td>
+                                    <td class="tg-baqh">77.53 (2.15)</td>
+                                    <td class="tg-baqh">59.34 (1.46)</td>
+                                    <td class="tg-baqh">47.34 (0.09)</td>
+                                    <td class="tg-baqh">44.04 (0.46)</td>
+                                    <td class="tg-baqh">64.50 (3.03)</td>
+                                    <td class="tg-baqh">61.97 (3.38)</td>
+                                    <td class="tg-baqh">70.81 (3.22)</td>
+                                    <td class="tg-baqh">62.19 (4.63)</td>
+                                    <td class="tg-baqh">70.05 (0.63)</td>
+                                    <td class="tg-baqh">68.39 (0.88)</td>
+                                    <td class="tg-baqh">42.32 (0.60)</td>
+                                    <td class="tg-baqh">40.31 (0.61)</td>
+                                    <td class="tg-baqh"><a href="mailto:wildtime@googlegroups.com" target="_blank"
+                                            rel="noopener noreferrer">Wild-Time</a></td>
+                                    <td class="tg-baqh"><span style="font-weight:400;font-style:normal">Paper/</span><a
+                                            href="https://github.com/huaxiuyao/Wild-Time" target="_blank"
+                                            rel="noopener noreferrer">Code</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0lax">IRM</td>
+                                    <td class="tg-baqh">80.46 (3.53)</td>
+                                    <td class="tg-baqh">64.42 (4.38)</td>
+                                    <td class="tg-baqh">38.73 (1.67)</td>
+                                    <td class="tg-baqh">34.93 (1.88)</td>
+                                    <td class="tg-baqh">59.67 (2.19)</td>
+                                    <td class="tg-baqh">56.73 (1.82)</td>
+                                    <td class="tg-baqh">67.02 (4.37)</td>
+                                    <td class="tg-baqh">57.08 (5.81)</td>
+                                    <td class="tg-baqh">70.21 (1.05)</td>
+                                    <td class="tg-baqh">68.71 (1.13)</td>
+                                    <td class="tg-baqh">35.75 (0.90)</td>
+                                    <td class="tg-baqh">33.91 (1.09)</td>
+                                    <td class="tg-baqh"><a href="mailto:wildtime@googlegroups.com" target="_blank"
+                                            rel="noopener noreferrer">Wild-Time</a></td>
+                                    <td class="tg-baqh"><span style="font-weight:400;font-style:normal">Paper/</span><a
+                                            href="https://github.com/huaxiuyao/Wild-Time" target="_blank"
+                                            rel="noopener noreferrer">Code</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0lax">SimCLR</td>
+                                    <td class="tg-baqh">78.59 (2.72)</td>
+                                    <td class="tg-baqh">60.15 (3.48)</td>
+                                    <td class="tg-baqh">42.91 (0.40)</td>
+                                    <td class="tg-baqh">39.54 (0.67)</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh"><a href="mailto:wildtime@googlegroups.com" target="_blank"
+                                            rel="noopener noreferrer">Wild-Time</a></td>
+                                    <td class="tg-baqh"><span style="font-weight:400;font-style:normal">Paper/</span><a
+                                            href="https://github.com/huaxiuyao/Wild-Time" target="_blank"
+                                            rel="noopener noreferrer">Code</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0lax">SwaV</td>
+                                    <td class="tg-baqh">78.38 (1.86)</td>
+                                    <td class="tg-baqh">60.73 (1.08)</td>
+                                    <td class="tg-baqh">49.53 (0.27)</td>
+                                    <td class="tg-baqh">46.31 (0.58)</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh">-</td>
+                                    <td class="tg-baqh"><a href="mailto:wildtime@googlegroups.com" target="_blank"
+                                            rel="noopener noreferrer">Wild-Time</a></td>
+                                    <td class="tg-baqh"><span style="font-weight:400;font-style:normal">Paper/</span><a
+                                            href="https://github.com/huaxiuyao/Wild-Time" target="_blank"
+                                            rel="noopener noreferrer">Code</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-0lax">SWA</td>
+                                    <td class="tg-amwm">84.25 (3.06)</td>
+                                    <td class="tg-baqh">67.90 (4.34)</td>
+                                    <td class="tg-baqh">50.59 (0.46)</td>
+                                    <td class="tg-baqh">47.15 (0.92)</td>
+                                    <td class="tg-baqh">41.89 (1.46)</td>
+                                    <td class="tg-baqh">32.86 (2.81)</td>
+                                    <td class="tg-baqh">63.60 (5.09)</td>
+                                    <td class="tg-baqh">54.58 (7.94)</td>
+                                    <td class="tg-baqh">70.98 (0.05)</td>
+                                    <td class="tg-amwm">69.52 (0.10)</td>
+                                    <td class="tg-baqh">44.36 (0.77)</td>
+                                    <td class="tg-baqh">42.54 (0.68)</td>
+                                    <td class="tg-baqh"><a href="mailto:wildtime@googlegroups.com" target="_blank"
+                                            rel="noopener noreferrer">Wild-Time</a></td>
+                                    <td class="tg-baqh"><span style="font-weight:400;font-style:normal">Paper/</span><a
+                                            href="https://github.com/huaxiuyao/Wild-Time" target="_blank"
+                                            rel="noopener noreferrer">Code</a></td>
+                                </tr>
                             </tbody>
-                            </table>
-                    </div>
-            
-                    <div class="col-lg-1 text-left">
-                        &nbsp;
+                        </table>
+
+                        <div class="col-lg-1 text-left">
+                            &nbsp;
+                        </div>
                     </div>
                 </div>
-            </div>
     </section>
 
     <!-- Team Section -->
