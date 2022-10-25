@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="favicon.ico?">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Wild-Time">
+
+
+    <title>Wild-Time </title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/agency.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap" rel="stylesheet"
+        type="text/css">
+
+</head>
+
+<body id="page-top" class="index">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <!--<ul class="nav navbar-nav navbar-middle">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+
+                    </ul>-->
+                    <ul class="nav navbar-nav navbar-middle">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+
+                        <li>
+                            <a class="page-scroll" href="#" style='padding-left: 0px; font-size:24px;'>Wild-Time</a>
+                        </li>
+                        <li>
+                            <a style='padding-left: 300px;'></a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#introduction">Get Started</a>
+                        </li>
+
+                        <li>
+                            <a class="page-scroll" href="#dataset">Datasets</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#leaderboard">Leaderboard</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#teamx">Team</a>
+                        </li>
+                        <li>
+                        <li>
+                            <a class="page-scroll" href="#contactxx">Contact</a>
+                        </li>
+                        <li>
+
+                            <!-- <li>
+                        <a class="buttom" href="index_2020.html">TSW 2020</a>
+                    </li> -->
+
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <style>
+            header {
+                background-image: url(img/bg.webp);
+                color: #fff
+            }
+
+            A.style1:link {
+                color: whitesmoke;
+                text-decoration: none;
+            }
+
+            A.style1:visited {
+                color: whitesmoke;
+                text-decoration: none;
+            }
+
+            A.style1:hover {
+                text-decoration: underline;
+            }
+        </style>
+        <div class="container">
+            </br>
+
+
+            <div class="intro-text">
+                </br>
+                <div class="intro-heading"><img src="img/logo_w.png" style="max-width: 38%" class="center_dataset">
+                </div>
+                </br>
+                </br>
+
+                <div class="intro-lead-in">A benchmark for in-the-wild natural distribution shift over time</div>
+                </br>
+            </div>
+        </div>
+    </header>
+    </br></br></br></br>
+
+    <!-- Get Started Section -->
+    <section id="introduction">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <h2 class="section-heading">Get Started</h2>
+                </div>
+            </div>
+            <div class="row text-justify">
+                <div class="col-md-12">
+                    <p class="large text-muted">
+                        The Wild-Time package is an open-source Python package that provides a simple, standardized
+                        interface for all datasets in the benchmark. It contains:
+                    </p></br>
+                    <ul class="large text-muted" , style="float:left; width: 100%">
+                        <li> Data loaders that automatically handle data downloading, processing, and splitting, and
+                        </li>
+                        <li> Dataset evaluators that standardize model evaluation for each dataset.</li>
+                    </ul></br>
+                    </p></br>
+                    <p></p>
+                    <h3 class="section-heading">Installation</h3>
+                    <p class="large text-muted">To use our code, you first need to install your own version of pytorch,
+                        with version > 1.7.1 .
+
+                    </p>
+                    <p class="large text-muted">
+                        Then, we recommend using pip to install Wild-Time:
+                    <p class="large text-muted">Running <code
+                            class="language-plaintext highlighter-rouge">pip install wildtime</code> will
+                        automatically check for and install all of these requirements
+                    <p class="large text-muted">If you plan to edit or contribute to Wild-Time, you should install from
+                        source:</p>
+                    <div class="language-bash highlighter-rouge">
+                        <div class="highlight">
+                            <pre class="highlight"><code>git clone https://github.com/huaxiuyao/Wild-Time.git
+                            <span class="nb">cd </span>wilds
+                            pip <span class="nb">install</span> <span class="nt">-e</span> <span class="nb">.</span>
+                            </code></pre>
+                        </div>
+                    </div>
+                    </p></br>
+                    <h3 class="section-heading">Using the Wild-Time package
+                    </h3>
+                    <p class="large text-muted">We provide the following steps to use Wild-Time package</p>
+                    <h4 class="section-heading">Import dependencies
+                    </h4>
+                    <p class="large text-muted">
+                        To load the wildtime data, you first need to import the dependencies:
+                    </p></br>
+                    <div class="language-bash highlighter-rouge">
+                        <div class="highlight">
+                            <pre class="highlight"><code>import argparse
+                            <span class="nb">from configures import configures</span>
+                            <span class="nb">configs = argparse.Namespace(**configs)</span>
+                            </code></pre>
+                        </div>
+                    </div>
+                    <h4 class="section-heading">Load Wild-Time data
+                    </h4>
+                    <p class="large text-muted">
+                        Then, You can use the following code to load the dataset:
+                    </p></br>
+                    <div class="language-bash highlighter-rouge">
+                        <div class="highlight">
+                            <pre class="highlight"><code>from WildTime import dataloader
+                            <span class="nb">data = dataloader.getdata(configs)
+                            </span>
+                            </code></pre>
+                        </div>
+                        <h4 class="section-heading">Baseline Running
+                        </h4>
+                        <p class="large text-muted">
+                            To train a baseline on a Wild-Time dataset and evaluate under Eval-Fix (default evaluation),
+                            use the code:
+                        </p></br>
+                        <div class="language-bash highlighter-rouge">
+                            <div class="highlight">
+                                <pre class="highlight"><code>from WildTime import dataloader
+                                <span class="nb">data = dataloader.getdata(configs)
+                                </span>
+                                </code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- datasets section -->
+    <!-- <section id="call" class="bg-mid-gray"> -->
+    <section id="dataset">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <h2 class="section-heading">Datasets</h2>
+
+                    <div class="row text-justify">
+                        <div class="col-md-12">
+
+
+                            <p class="large text-muted">
+                                Distribution shift occurs when the test distribution differs from the training distri-
+                                bution, and it can considerably degrade performance of machine learning models
+                                deployed in the real world. Temporal shifts - distribution shifts arising from the pas-
+                                sage of time – often occur gradually and have the additional structure of timestamp
+                                metadata. By leveraging timestamp metadata, models can potentially learn from
+                                trends in past distribution shifts and extrapolate into the future. While recent works
+                                have studied distribution shifts, temporal shifts remain underexplored. To address
+                                this gap, we curate Wild-Time, a benchmark of 5 datasets that reflect <b>temporal
+                                    distribution shifts</b> arising in a variety of real-world applications, including
+                                patient
+                                prognosis and news classification. We use two evaluation strate-
+                                gies: evaluation with a fixed time split (Eval-Fix) and evaluation with a data stream
+                                (Eval-Stream).
+                            </p>
+
+                            <div class="img_wrap">
+                                <img src="img/data_description.jpg" style="max-width: 80%" class="center_dataset">
+                            </div>
+
+                            <p class="large text-muted">We briefly introduce the dataset below. Please refer to our
+                                paper for more detailed dataset descriptions
+                            </p>
+                            <ul class="large text-muted" style="float:left; width: 100%">
+                                <li> <b>Yearbook</b>: Social norms, fashion styles, and population demographics change
+                                    over
+                                    time. This is captured in the Yearbook dataset, which consists of 37,921
+                                    frontal-facing American high
+                                    school yearbook photos. We exclude portraits from 1905 − 1929 due to the limited
+                                    number of
+                                    examples in these years, resulting in 33,431 examples from 1930−2013. Each photo is
+                                    a 32×32×1
+                                    grey-scale image associated with a binary label y, which represents the student’s
+                                    gender.</li>
+                                <li> <b>FMoW</b>: Machine learning models can be used to analyze satellite imagery and
+                                    aid humanitarian and policy efforts by monitoring croplands and predicting crop
+                                    yield
+                                    and poverty levels. Due to human activity, satellite imagery changes over time,
+                                    requiring models that are robust to temporal distribution shifts. We study this
+                                    problem on the Functional
+                                    Map of the World (FMoW) dataset, adapted from the WILDS benchmark. Given a satellite
+                                    image, the task is to predict the type of land
+                                    usage. The FMoW dataset consists of 141,696 examples from 2002 − 2017. </li>
+                                <li> <b>MIMIC-IV</b>: Many machine learning healthcare applications have emerged in the
+                                    last decade However, changes in healthcare over time,
+                                    such as the emergence of new treatments and changes in patient demographics, are an
+                                    obstacle in
+                                    deploying machine learning-based clinical decision support systems.
+                                    We study this problem on MIMIC-IV, one of the largest public healthcare datasets
+                                    that comprises
+                                    abundant medical records of over 40,000 patients. In MIMIC-IV, we treat each
+                                    admission as one
+                                    record, resulting in 216,487 healthcare records from 2008 − 2020. Specifically, we
+                                    consider two
+                                    classification tasks:
+                                    <ul class="large text-muted" style="float:left; width: 100%">
+                                        <li>
+                                            <b>MIMIC-Readmission</b> aims to predict the risk of being readmitted to the
+                                            hospital within 15 days.
+                                        </li>
+                                        <li>
+                                            <b>MIMIC-Mortality</b> aims to predict in-hospital mortality for each
+                                            patient.
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li> <b>Huffpost</b>: In many language models which deal with information correlated
+                                    with
+                                    time, temporal distribution shifts cause performance degradation in downstream tasks
+                                    such as Twitter
+                                    hashtag classification or question-answering systems. Performance drops across time
+                                    reflect
+                                    changes in the style or content of current events. We study this temporal shift on
+                                    the Huffpost dataset. The task is to identify tags of news articles
+                                    from their headlines. Each input feature x is a news headline, and the output y is
+                                    the news category</li>
+                                <li> <b>arXiv</b>: Due to the evolution of research fields, the style of arXiv
+                                    pre-prints also
+                                    changes over time, reflected by the change in article categories. For example,
+                                    “neural network attack"
+                                    was originally a popular keyword in the security community, but gradually became
+                                    more prevalent in
+                                    the machine learning community. We study this temporal shift in the arXiv dataset
+                                    [18], where the
+                                    task is to predict the primary category of arXiv pre-prints given the paper title as
+                                    input. The entire
+                                    dataset includes 172 pre-print categories from 2007 − 2022.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+    </section>
+
+
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <h2 class="section-heading">Leaderboard</h2>
+                    <!-- <h3 class="section-subheading text-muted">
+                        Long Beach Convention Center, Long Beach <br>
+                        8:45 am - 6:05 pm <br>
+                        June 14, 2019<br>
+                    </h3> -->
+                </div>
+            </div>
+
+            <h3 class="section-heading">Overview</h3>
+
+            <p class="large text-muted">To submit, please read our submission guidelines.</p>
+
+            <p class="large text-muted">Higher numbers are better for all metrics. In parentheses, we show corrected
+                sample standard deviations across random replicates.</p>
+
+            <p class="large text-muted">An asterisk next to a value indicates that the entry deviates from the official
+                submission guidelines, for example because it uses a non-default model or additional pre-training data.
+                The deviations are described in the notes in the dataset-specific leaderboards.</p>
+
+            <p class="large text-muted">This overall leaderboard show out-of-distribution test performance across all
+                datasets. For each dataset, we
+                bold the best-performing algorithm that conforms to official submission guidelines.</p>
+
+            <p class="large text-muted"><b>The leaderboard only used for comparing the results under the Eval-Fix setting.</b></p>
+
+
+            <div id="schedule">
+                <div class="container w">
+                    <div class="row centered">
+                        <style type="text/css">
+                            .tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;}
+                            .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
+                              font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+                            .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
+                              font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                            .tg .tg-65iu{border-color:#cccccc;text-align:left;vertical-align:top}
+                            .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+                            .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+                            .tg .tg-o57c{border-color:#cccccc;text-align:center;vertical-align:top}
+                            </style>
+                            <table class="tg">
+                            <thead>
+                              <tr>
+                                <th class="tg-0pky"></th>
+                                <th class="tg-c3ow" colspan="2">Yearbook (Acc)</th>
+                                <th class="tg-c3ow" colspan="2">FMoW (Acc)</th>
+                                <th class="tg-c3ow" colspan="2">MIMIC-Readmission <span style="font-weight:400;font-style:normal">(Acc)</span></th>
+                                <th class="tg-c3ow" colspan="2">MIMIC-Mortality (AUC)</th>
+                                <th class="tg-c3ow" colspan="2">Huffpost (Acc)</th>
+                                <th class="tg-c3ow" colspan="2">arXiv (Acc)</th>
+                                <th class="tg-c3ow" rowspan="2">Contact</th>
+                                <th class="tg-c3ow" rowspan="2">References</th>
+                              </tr>
+                              <tr>
+                                <th class="tg-65iu"></th>
+                                <th class="tg-o57c">Avg.</th>
+                                <th class="tg-o57c">Worst</th>
+                                <th class="tg-o57c">Avg.</th>
+                                <th class="tg-o57c">Worst</th>
+                                <th class="tg-c3ow">Avg</th>
+                                <th class="tg-c3ow">Worst</th>
+                                <th class="tg-c3ow">Avg</th>
+                                <th class="tg-c3ow">Worst</th>
+                                <th class="tg-c3ow">Avg</th>
+                                <th class="tg-c3ow">Worst</th>
+                                <th class="tg-c3ow">Avg</th>
+                                <th class="tg-c3ow">Worst</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="tg-65iu">Fine-tuning</td>
+                                <td class="tg-o57c">81.98 (1.52)</td>
+                                <td class="tg-o57c"><span style="font-weight:bold">69.62 (3.38)</span></td>
+                                <td class="tg-o57c">45.77 (0.53)</td>
+                                <td class="tg-o57c">43.21 (0.85)</td>
+                                <td class="tg-c3ow">48.84 (4.25)</td>
+                                <td class="tg-c3ow">44.62 (4.92)</td>
+                                <td class="tg-c3ow">71.71 (5.03)</td>
+                                <td class="tg-c3ow">62.34 (7.82)</td>
+                                <td class="tg-c3ow">69.59 (0.10)</td>
+                                <td class="tg-c3ow">68.91 (0.49)</td>
+                                <td class="tg-c3ow">50.31 (0.39)</td>
+                                <td class="tg-c3ow">48.19 (0.41)</td>
+                                <td class="tg-c3ow">Wild-Time</td>
+                                <td class="tg-c3ow">Paper/Code</td>
+                              </tr>
+                              <tr>
+                                <td class="tg-65iu">EWC</td>
+                                <td class="tg-o57c">80.07 (0.22)</td>
+                                <td class="tg-o57c">66.61 (1.95)</td>
+                                <td class="tg-o57c">45.60 (0.28)</td>
+                                <td class="tg-o57c">43.13 (0.50)</td>
+                                <td class="tg-c3ow">51.41 (1.62)</td>
+                                <td class="tg-c3ow">47.24 (2.28)</td>
+                                <td class="tg-c3ow">69.04 (2.03)</td>
+                                <td class="tg-c3ow">58.89 (2.08)</td>
+                                <td class="tg-c3ow">69.42 (1.00)</td>
+                                <td class="tg-c3ow">68.61 (0.98)</td>
+                                <td class="tg-c3ow">50.40 (0.11)</td>
+                                <td class="tg-c3ow">48.18 (0.18)</td>
+                                <td class="tg-c3ow">Wild-Time</td>
+                                <td class="tg-c3ow">Paper/Code</td>
+                              </tr>
+                              <tr>
+                                <td class="tg-65iu">SI</td>
+                                <td class="tg-o57c">78.70 (3.78)</td>
+                                <td class="tg-o57c">65.18 (2.44)</td>
+                                <td class="tg-o57c">44.87 (0.73)</td>
+                                <td class="tg-o57c">42.97 (1.15)</td>
+                                <td class="tg-c3ow">43.43 (7.34)</td>
+                                <td class="tg-c3ow">37.01 (11.43)</td>
+                                <td class="tg-c3ow">66.47 (1.56)</td>
+                                <td class="tg-c3ow">55.49 (1.31)</td>
+                                <td class="tg-c3ow">70.46 (0.27)</td>
+                                <td class="tg-c3ow">69.05 (0.52)</td>
+                                <td class="tg-c3ow">50.21 (0.40)</td>
+                                <td class="tg-c3ow">48.07 (0.48)</td>
+                                <td class="tg-c3ow">Wild-Time</td>
+                                <td class="tg-c3ow">Paper/Code</td>
+                              </tr>
+                              <tr>
+                                <td class="tg-65iu">A-GEM</td>
+                                <td class="tg-o57c">81.04 (1.40)</td>
+                                <td class="tg-o57c">67.07 (2.23)</td>
+                                <td class="tg-o57c">45.21 (0.20)</td>
+                                <td class="tg-o57c">42.49 (0.70)</td>
+                                <td class="tg-c3ow">55.55 (22.0)</td>
+                                <td class="tg-c3ow">53.74 (20.4)</td>
+                                <td class="tg-c3ow">60.47 (0.28)</td>
+                                <td class="tg-c3ow">50.00 (0.00)</td>
+                                <td class="tg-c3ow">70.22 (0.50)</td>
+                                <td class="tg-c3ow">69.15 (0.88)</td>
+                                <td class="tg-c3ow">50.30 (0.37)</td>
+                                <td class="tg-c3ow">48.14 (0.40)</td>
+                                <td class="tg-c3ow">Wild-Time</td>
+                                <td class="tg-c3ow">Paper/Code</td>
+                              </tr>
+                              <tr>
+                                <td class="tg-65iu"></td>
+                                <td class="tg-o57c"></td>
+                                <td class="tg-o57c"></td>
+                                <td class="tg-o57c"></td>
+                                <td class="tg-o57c"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                              </tr>
+                              <tr>
+                                <td class="tg-65iu"></td>
+                                <td class="tg-o57c"></td>
+                                <td class="tg-o57c"></td>
+                                <td class="tg-o57c"></td>
+                                <td class="tg-o57c"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                                <td class="tg-c3ow"></td>
+                              </tr>
+                            </tbody>
+                            </table>
+                    </div>
+            
+                    <div class="col-lg-1 text-left">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="teamx">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <h2 class="section-heading">Team</h2>
+                    <!--h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3-->
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+
+            <div class="row row-centered ">
+                <div class="col-sm-2">
+                    <div class="team-member">
+                        <img src="img/team/Huaxiu_Yao.jpg" height="150" width="150" class="img-responsive img-circle">
+                        <a href="https://huaxiuyao.mystrikingly.com/">
+                            <h4>Huaxiu Yao</h4>
+                        </a>
+                        <p class="text-muted">Stanford</p>
+                    </div>
+                </div>
+
+                <div class="row row-centered ">
+                    <div class="col-sm-2">
+                        <div class="team-member">
+                            <img src="img/team/Caroline_Choi.jpeg" height="150" width="150"
+                                class="img-responsive img-circle">
+                            <a href="https://scholar.google.com/citations?user=f4G8d00AAAAJ&hl=en">
+                                <h4>Caroline Choi</h4>
+                            </a>
+                            <p class="text-muted">Stanford</p>
+                        </div>
+                    </div>
+
+                    <div class="row row-centered ">
+                        <div class="col-sm-2">
+                            <div class="team-member">
+                                <img src="img/team/Bochuan_Cao.png" height="150" width="150"
+                                    class="img-responsive img-circle">
+                                <a href="">
+                                    <h4>Bochuan Cao</h4>
+                                </a>
+                                <p class="text-muted">Penn State</p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row row-centered ">
+                            <div class="col-sm-2">
+                                <div class="team-member">
+                                    <img src="img/team/Yoonho_Lee.png" height="150" width="150"
+                                        class="img-responsive img-circle">
+                                    <a href="https://yoonholee.com/">
+                                        <h4>Yoonho Lee</h4>
+                                    </a>
+                                    <p class="text-muted">Stanford</p>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row row-centered ">
+                                <div class="col-sm-2">
+                                    <div class="team-member">
+                                        <img src="img/team/Pangwei_Koh.jpeg" height="150" width="150"
+                                            class="img-responsive img-circle">
+                                        <a href="https://coley.mit.edu/">
+                                            <h4>Pang Wei Koh</h4>
+                                        </a>
+                                        <p class="text-muted">Stanford</p>
+                                    </div>
+                                </div>
+
+                                <div class="row row-centered ">
+                                    <div class="col-sm-2">
+                                        <div class="team-member">
+                                            <img src="img/team/Chelsea_Finn.jpeg" height="150" width="150"
+                                                class="img-responsive img-circle">
+                                            <a href="https://beerys.github.io/">
+                                                <h4> Chelsea_Finn</h4>
+                                            </a>
+                                            <p class="text-muted">Stanford</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contactxx">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-heading">Contact</h2>
+                    <p class="large text-muted">
+                        If you have any questions or feedback, or if you would like to contribute a dataset, please
+                        contact us at <a href="mailto:wildtime@googlegroups.com">wildtime@googlegroups.com</a>.</p>
+                    <p class="large text-muted">
+                        For issues with the code, please file a <a
+                            href="https://github.com/huaxiuyao/Wild-Time/issues">Github issue</a>.</p>
+                    <p class="large text-muted">
+                        Wild-Time is under active development. To get updates, please subscribe to our mailing list!</p>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+
+</body>
+
+</html>
