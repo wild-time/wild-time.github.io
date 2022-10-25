@@ -1,1 +1,1 @@
-# wildtime.github.io
+# wild-time.github.io
