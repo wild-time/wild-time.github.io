@@ -4,6 +4,7 @@
 <head>
     <link rel="shortcut icon" href="favicon.ico?">
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Wild-Time">
@@ -134,7 +135,7 @@
                 </br>
                 </br>
 
-                <div class="intro-lead-in">A benchmark for in-the-wild natural distribution shift over time</div>
+                <div class="intro-lead-in">A benchmark for in-the-wild distribution shift over time</div>
                 </br>
             </div>
         </div>
@@ -191,7 +192,7 @@
                     <h4 class="section-heading">Load Wild-Time data
                     </h4>
                     <p class="large text-muted">
-                        Then, You can use the following code to load the dataset:
+                        Then, you can use the following code to load the dataset:
                     </p></br>
                     <div class="language-bash highlighter-rouge">
                         <div class="highlight">
@@ -282,18 +283,17 @@
 
 
                             <p class="large text-muted">
-                                Distribution shift occurs when the test distribution differs from the training distri-
-                                bution, and it can considerably degrade performance of machine learning models
-                                deployed in the real world. Temporal shifts - distribution shifts arising from the pas-
-                                sage of time – often occur gradually and have the additional structure of timestamp
-                                metadata. By leveraging timestamp metadata, models can potentially learn from
-                                trends in past distribution shifts and extrapolate into the future. While recent works
-                                have studied distribution shifts, temporal shifts remain underexplored. To address
-                                this gap, we curate Wild-Time, a benchmark of 5 datasets that reflect <b>temporal
+                                Distribution shift occurs when the test distribution differs from the training
+                                distribution, and it can considerably degrade performance of machine learning models
+                                deployed in the real world. Temporal shifts - distribution shifts arising from the
+                                passage of time – often occur gradually and have the additional structure of timestamp
+                                metadata. By leveraging timestamp metadata, models can potentially learn from trends in
+                                past distribution shifts and extrapolate into the future. While recent works
+                                have studied distribution shifts, temporal shifts remain underexplored. To address this
+                                gap, we curate Wild-Time, a benchmark of 5 datasets that reflect <b>temporal
                                     distribution shifts</b> arising in a variety of real-world applications, including
-                                patient
-                                prognosis and news classification. We use two evaluation strate-
-                                gies: evaluation with a fixed time split (Eval-Fix) and evaluation with a data stream
+                                patient prognosis and news classification. We use two evaluation strategies: evaluation
+                                with a fixed time split (Eval-Fix) and evaluation with a data stream
                                 (Eval-Stream).
                             </p>
 
@@ -407,7 +407,7 @@
                 datasets. For each dataset, we
                 bold the best-performing algorithm that conforms to official submission guidelines.</p>
 
-            <p class="large text-muted"><b>The leaderboard only used for comparing the results under the Eval-Fix
+            <p class="large text-muted"><b>The leaderboard is only used for comparing the results under the Eval-Fix
                     setting.</b></p>
 
             <h3 class="section-heading">Eval-Fix Evaluation</h3>
