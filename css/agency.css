@@ -1073,9 +1073,9 @@ body
 	width: 80%;
   }
 
-.col-sm-2 {
+/* .col-sm-2 {
 width: 15%;
-}
+} */
 
 .highlight_new_last {
 	margin-left: auto;
@@ -1090,3 +1090,21 @@ width: 15%;
 		margin-top:-20px;
 		margin-bottom:30px;
 		}
+
+
+.col-sm-3half{
+	position: relative;
+	min-height: auto;
+	padding-right: auto;
+	padding-left: auto;
+}
+
+@media (min-width: 768px) {
+	.col-sm-3half {
+		float: left;
+	}
+	.col-sm-3half {
+		width: 16.5%;
+	}
+
+}
